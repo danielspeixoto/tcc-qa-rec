@@ -1,0 +1,47 @@
+\chapter{Introdução}
+\label{cap:introduction}
+
+\begin{quotation}[]{Yoko Ono}
+The computer is my favourite invention. I feel lucky to be part of the global village. I don't mean to brag, but I'm so fast with technology. People think it all seems too much, but we'll get used to it. I'm sure it all seemed too much when we were learning to walk.
+\end{quotation}
+
+A popularização da Internet permitiu que a obtenção e geração de conhecimento também se tornasse acessível à uma maior parte da população. Temos mais de 3.8 bilhões de usuários \cite{dataneversleeps6}, geramos 2.5 petabytes todos os dias \cite{dataperday}, as enciclopédias foram substituídas por wikis, aulas e cursos já estão migrando para serviços de streaming e as discussões saíram dos espaços físicos para os fóruns. Além disso, o conhecimento agora é mais democrático, muito mais pessoas podem produzir conteúdo, são mais de 600 edições de páginas na Wikipédia\footnote{https://www.wikipedia.org/} por minuto \cite{dataneversleeps5}, não somente grandes empresas ou acadêmicos, e qualquer um com uma rede de Internet pode consumir esse conteúdo criado. 
+
+Platão, famoso filósofo grego, criou um método chamado dialética, onde, junto com sua academia, buscava estabelecer a verdade por meio de discussões sobre dúvidas e problemas. A dialética contrasta com a didática, onde se propõe que um dos interlocutores seja o único à transmitir à informação, desfavorecendo o debate. Da mesma forma, por meio dos fóruns, o conteúdo é orientado às perguntas em vez da exposição do conteúdo em si, tornando aos métodos de ensino indicados por Platão. 
+
+Existem diversos tipos de fóruns na Internet, alguns mais conhecidos como Yahoo Respostas\footnote{https://www.answers.yahoo.com/}, StackOverflow\footnote{https://www.stackoverflow.com/}, AskUbuntu\footnote{https://www.askubuntu.coms/}, etc e também alguns com domínios específicos para comunidades, que podem falar sobre animes, filmes, música, empreendedorismo e etc. Os grandes fóruns, normalmente contam com equipes especializadas para seu funcionamento, entretanto os pequenos, são normalmente criados em plataformas que também os hospedam, como é o caso da Fandom\footnote{https://www.fandom.com/}, que permite que usuários hospedem fóruns de entretenimento gratuitamente. Graças à eles, aqueles que tem perguntas, possuem meios para interagir com os que detêm conhecimento de um determinado domínio, além de compartilhar essa interação com o resto da comunidade, que está ao redor de todo o globo.
+
+Graças aos mecanismos de interação do usuário com a informação, é possível se verificar a relevância de uma dada informação. O StackOverflow\footnote{https://www.stackoverflow.com/} usa dessa estratégia para que as respostas possam ser validadas ou não pela comunidade. Por meio de votos positivos e negativos, comentários, avaliação do próprio autor da pergunta e outros, a comunidade pode expressar sua opinião sobre as respostas ofertadas.
+
+Com um número tão grande de informação, os usuários precisam de ajuda pra encontrar a informação desejada, com este problema, surgiram os buscadores. Buscadores com Google\footnote{https://www.google.com/}, Bing\footnote{https://www.bing.com/} já estão disponíveis há bastante tempo, só o Google, realiza mais de 3.5 bilhões de buscas todos os dias \cite{googlesearch}, porém cada vez mais encontramos buscadores específicos para determinados conteúdos, como é o caso do Google Scholar\footnote{https://www.scholar.google.com/}, YouTube\footnote{https://www.youtube.com/}, Buscapé\footnote{https://www.buscape.com.br/}, etc. Para resolver o problema do usuário, se tornou necessária a criação de buscadores para fóruns de perguntas e respostas.
+
+%Os fóruns de perguntas e respostas funcionam com usuários que realizam perguntas e outros respondendo à estas perguntas, essa interação é avaliada pela comunidade, que verifica a clareza e a qualidade não só das respostas, mas também das perguntas, pois com uma pergunta escrita de forma clara, se torna mais fácil para se verificar a real intenção do autor.
+
+\section{Motivação}
+Cerca de 80\% à 84\% das buscas no Google já foram feitas anteriormente \cite{googleexplained}, isso mostra como a reincidência de buscas é algo comum. Da mesma forma, perguntas em fóruns tendem a se repetir. É muito importante que um buscador de fórum de perguntas e respostas traga bons resultados. Se um usuário não possui sua dúvida sanada por meio do histórico de perguntas já existente, ele deve criar uma nova pergunta para esse banco de dados, o que implicará, quando essa resposta já existe no fórum, em um retrabalho para a discussão nessa pergunta e um aumento desnecessário do problema, já que agora temos mais uma pergunta no banco de dados.
+
+Por outro lado, técnicas que demandem muito esforço podem ser inviabilizadas pela restrição do tempo, já que se espera que os resultados sejam entregues em questão de segundos. Para uma única busca, o Google usa mil computadores em 0.2 segundos para trazer uma resposta \cite{buildinggoogle}, mas o que vale para o Google, não necessariamente vale para a realidade de outros buscadores. Por esta razão, precisamos trazer soluções que sejam viáveis para os pequenos fóruns que dependem de uma plataforma pública para hospedagem, permitindo que as plataformas possam implementar essa ferramenta, sem muito custo adicional.
+
+Devido à tamanha complexidade e a falta de ferramentas disponíveis, não somente os fóruns pequenos, mas também as grandes plataformas e os grandes fóruns, abrem mão de um serviço de busca eficiente. 
+\section{Problema}
+O problema que esse trabalho visa resolver é a baixa precisão nos buscadores de perguntas e respostas diante de um cenário em que os são recursos limitados. O seguinte estudo verifica meios para retornar bons resultados ainda que não se haja tanto poder computacional e/ou grandes equipes de desenvolvimento, de forma que, a solução deva ser simples e eficiente.
+
+Com bilhões de informações disponíveis, precisamos usar filtros para encontrar a informação desejada. Para isso, precisamos verificar a relevância e a utilidade que esta informação possui, pois nem toda informação recebida é necessariamente verdade ou capaz de solucionar o problema do usuário. Porém, esta mesma tarefa tem que ser executada em tempo hábil para se prover uma resposta satisfatória para o usuário, o que é outro problema já que consideramos um número massivo de dados. 
+
+Ainda que tenhamos metadados, é preciso entender o valor que estes trazem para a busca. Informações como datas, feedbacks positivos e interação com conteúdo podem ter influências diferentes dependendo do domínio utilizado, já que alguns conteúdos podem ser desvalorizados com o passar do tempo e outros perdurarem, da mesma forma, algumas perguntas por serem mais frequentemente encontradas podem ter a tendência de ter mais interações que outras, o que pode prejudicar as perguntas que não ocorrem tão frequentemente.
+
+Assim, considerando que o público-alvo tem um grande volume de dados e recursos limitados é necessário descartar opções muito custosas.
+
+\section{Objetivos da Solução Proposta}
+O objetivo desse trabalho é trazer perguntas já existentes nos fóruns que podem possivelmente resolver a pergunta do usuário de maneira rápida e não muito custosa. Tendo como objetivos específicos:
+
+\begin{itemize}
+    \item Revisão da literatura existente de Recuperação da Informação
+    \item Recuperar perguntas já existentes que sejam relevantes à busca do usuário.
+    \item Propor um método eficiente para avaliar a relevância de perguntas para uma dada busca.
+    \item Realizar uma avaliação experimental a fim de verificar-se a qualidade das buscas.
+\end{itemize}
+
+\section{Estrutura}
+
+<Resumo do que será visto nos próximos capítulos>
