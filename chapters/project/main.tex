@@ -91,8 +91,9 @@ Para este projeto, foi usado a tokenização dividindo o conteúdo do texto em p
     \label{tab:tokenization}
 \end{table}
 
-\subsection{Transformações}
-Algumas transformações podem se fazer necessárias no corpus. Foi usada nesse projeto uma transformação responsável por deixar todos os caracteres minúsculos.
+\subsection{Filtros de tokens}
+\subsubsection{Uniformização}
+ Foi usada nesse projeto uma transformação responsável por deixar todos os caracteres minúsculos.
 
 \begin{table}[htb]
 	\centering
@@ -109,7 +110,6 @@ Algumas transformações podem se fazer necessárias no corpus. Foi usada nesse 
     \label{tab:transformations}
 \end{table}
 
-\subsection{Filtros de tokens}
 \subsubsection{Remoção de Stop Words}
 Existem palavras que adicionam pouco valor semântico ao texto, são conhecidas como \textit{stop words}. Stop words são palavras como: isso, um, a, o, que. Estas também serão removidas. Existem diversas formas de as detectar em um corpus, as mais comuns são com uso de listas com stop words predefinidas ou definindo um limiar máximo de ocorrências que uma palavra pode ter. Assume-se que palavras que ocorrem frequentemente em vários documentos não agregam muito conteúdo ao texto.
 

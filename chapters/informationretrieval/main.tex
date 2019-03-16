@@ -5,21 +5,17 @@
 The computer is my favourite invention. I feel lucky to be part of the global village. I don't mean to brag, but I'm so fast with technology. People think it all seems too much, but we'll get used to it. I'm sure it all seemed too much when we were learning to walk.
 \end{quotation}
 
-A necessidade das pessoas de encontrar informação tem crescido bastante e tem se tornado uma prática de seu cotidiano. As informações devem ser precisas e estar disponíveis quase que imediatamente. Este capítulo fornece uma visão geral sobre Recuperação de Informação, a diferença entre recuperar uma informação e recuperar um dado e as técnicas utilizadas nas buscas.
+Conforme foi descrito no capítulo \ref{cap:introduction}, na WEB 3.0, o volume de informações cada vez maior tornou necessária a existência de meios para encontrar a informação. O conteúdo, atualmente, não é feito só pra a compreensão humana, mas também para a compreensão das máquinas. Os usuários exigem que as informações desejadas sejam disponibilizadas quase que imediatamente e com precisão. Neste capítulo será abordado tópico de \ac{RI}, onde serão vistos as diferenças entre este e \ac{RD}, além das técnicas mais comumente utilizadas para realizar suas taregas.
 
 \section{Introdução}
+Recuperar informações é um processo que pode ser bastante impreciso, é exigido de uma máquina uma capacidade quase humana, a da interpretação. Por conta disso, muitas vezes se é esperado do usuário a capacidade de saber explicar corretamente para uma máquina os seus anseios, já não existe nenhuma tecnologia capaz de interpretar exatamente o pensamento humano nem de compreender por completo a relevância dos resultados que podem ser trazidos. o que normalmente se faz é buscar extrair o máximo de informação possível da expressão feita pelo usuário, através de técnicas de \ac{NLP} como será visto mais adiante.
 
-Nos tempos atuais, com o crescimento das bibliotecas virtuais e trocas eletrônicas de informações, há uma necessidade clara no melhoramento das técnicas de busca de informação. A gigantesca quantidade de informação e o tempo hábil do usuário para esperar por esses resultados são os fatores mais determinantes. 
-
-Tendo como foco a melhoria na qual os dados são encontrados e celeridade em que são exibidas para o usuário, a indexação é uma das principais técnicas utilizadas em conjunto com outros algoritmos complexos \cite{Fred2008}.
-
-Buscar informações, embora pareça uma atividade simples, é um processo muito impreciso. É esperado que o usuário possua uma noção vaga ao tentar buscar por uma informação, uma vez que não há uma interface direta que interprete exatamente às demandas do usuário e o resultado depende dos dados inicialmente fornecidos. Portanto, a interface deve ajudar o usuário na compreensão e expressão das necessidades de informação da melhor forma possível. Na formulação de suas consultas, fazendo a seleção da informação dentro de um conjunto de documentos, entendendo os resultados da pesquisa e acompanhar o progresso de suas buscas \cite{Baeza-Yates1999}.
+Além disso, há um requisito de tempo, todo o processo de interpretação das buscas e recuperação dos resultados, deve ser feito quase que instantaneamente. Tendo isso em mente, a indexação é uma das principais técnicas utilizadas para facilitar a recuperação e o cálculo de relevância de vários algoritmos \cite{Fred2008}. Não somente isso, mas técnicas para divisão da carga de trabalho tornaram-se mais comuns pra lidar com tamanha celeridade dos dados.
 
 \section{Recuperação de Informação versus Recuperação de Dados}
+Recuperação de Informação pode ser facilmente confundida com outros meios de acesso à informação. Ao contrário de sistemas baseados em conhecimento, sistemas de recuperação de informação não realizam conclusões a partir dos documentos acessados. Os sistemas baseados em conhecimento dependem de uma visão de mundo pré-definida para poder realizar inferências e gerar informação, muitas vezes o limitando. Já o propósito geral da recuperação de informação é conseguir entregar ao usuário documentos que possam satisfazer sua necessidade de informação \citep{Ruthven2003}, permitindo uma visão mais ampla.
 
-Uma série de características distinguem sistemas de Recuperação de Informação (\ac{RI}) de outras ferramentas de acesso à dados. Um sistema de \ac{RI} não extrai informações dos documentos acessados e normalmente também não processa as informações contidas nesses objetos. Isso separa os sistemas de RI de sistemas baseados no conhecimento, como sistemas especialistas. Essas ferramentas baseadas no conhecimento dependem fortemente de uma representação pré-definida de um domínio. Este conhecimento é geralmente utilizado para inferir, manipular ou categorizar informações através de dados. Diferente disso, os sistemas de Recuperação de Informação são usados para direcionar o usuário para documentos que possam ajudar a satisfazer suas necessidades de informação \citep{Ruthven2003}.
-
-Recuperação de Dados (\ac{RD}) tem o propósito de encontrar dados que casam perfeitamente com a consulta, enquanto recuperação de informação visa encontrar os dados que possuam no mínimo alguma similaridade. Consequentemente, recuperação de dados é mais sensível à erros, considerando que um único documento errado retornando dentro de uma lista de outros milhares corretos, é uma falha total da busca. Por outro lado, recuperação de informação pode ser imprecisa e erros eventuais não compromete completamente o resultado da busca. Isso acontece porque recuperação de informação geralmente lida com textos semi-estruturados de linguagem natural, que pode ser semanticamente ambíguo enquanto recuperação de dados, procura por dados dentro de um ambiente estruturado, como por exemplo, um banco de dados relacional \cite{Fred2008}.
+A recuperação da informação permite que existam diferenças entre o que foi requisitado pelo usuário e o que foi apresentado como resultado, desde que haja uma similaridade. A Recuperação de Dados (\ac{RD}), por outro lado, tenta garantir que a consulta irá trazer apenas o que foi especificado na consulta. Por conta disso, embora a recuperação da informação esteja sujeita à imprecisão e possíveis erros, a mesma é capaz de abranger um conteúdo maior e trazer resultados relacionados que não dependam tanto da capacidade do usuário de gerar uma consulta adequada, enquanto que a recuperação de dados, exige que o usuário tenha a capacidade de expressar perfeitamente sua necessidade e tem uma falha total quando não o consegue. Este mérito deve-se a capacidade de lidar com textos semi-estruturados de linguagem natural, enquanto que a recuperação de dados, acessa um ambiente, que embora seja estruturado, é limitado, um banco de dados relacional, por exemplo \cite{Fred2008}.
 
 \begin{table}[htb]
 	\centering
@@ -43,35 +39,148 @@ Recuperação de Dados (\ac{RD}) tem o propósito de encontrar dados que casam p
 		
 	\end{tabular}
 \end{table}
+%TODO Referência na tabela?
 
-Ainda segundo \cite{Fred2008}, o usuário que utiliza um sistema de recuperação de informação não está apenas interessado naquela exata combinação de palavras. Geralmente essas palavras servem para que sistema possa encontrar um assunto no qual elas estão inseridas e muitas das vezes, documentos que possuam palavras sinônimas podem ser de interesse do usuário também. Já um usuário de um sistema de recuperação de dados, está buscando por um item específico, com características particulares e apenas itens que seja exatamente como descritos na busca, são de interesse do usuário. Qualquer outro resultado não satisfará a busca.
+Seus casos de uso diferem, para este projeto, onde a maior parte do conteúdo é textual e desestruturado, é exatamente onde se encontra a informação desejada. Ainda de acordo com \cite{Fred2008}, as pessoas que usam sistemas de recuperação de informação procuram muito mais além do que apenas aquela exata combinação de palavras, inclusive, muito frequentemente o autor da consulta não detém informação suficiente sobre o domínio da sua busca para realizar buscas mais exatas. Sua consulta serve para encontrar um espaço mais amplo de respostas onde suas palavras-chave estão inseridas, ou talvez ainda, sinônimos ou referências similares, ainda que não sejam idênticos ao que foi especificado. Entretanto, mais comumente, são usados sistemas com recuperação de dados, onde informações relacionadas não são capazes de resolver o problema de um usuário. Aplicações com funcionalidades de cadastro, acesso à bancos, operações administrativas e outros, são muito comuns e não fariam sentido ao recuperar informações senão as exatamente definidas pelo usuário. 
 
 \section{Processamento de linguagem natural}
 \subsection{Histórico}
-\subsection{Sintática}
-\subsection{Semântica}
+Teste de Turing
+\subsection{Análise de documentos}
+Cada tópico passará por transformações antes de serem armazenadas. Considere os títulos descritas na tabela \ref{tab:example} no seu estado inicial. Estes irão ilustrar o pré-processamento. Vale ressaltar que o mesmo processo que está sendo descrito com os títulos também ocorre com o corpo.
+
+\begin{table}[htb]
+	\centering
+    \def\arraystretch{1.2} % padding da linhas da tabela
+    \begin{tabular}{|l|l|}
+        \hline
+        1 & <p>I will organize this room</p>            \\ \hline
+        2 & All rooms are organized and clean \\ \hline
+        3 & Cleaners are <b>very</b> effective                              \\ \hline
+        4 & I will open this window                            \\ \hline
+    \end{tabular}
+	\caption{Frases de exemplo}
+    \label{tab:example}
+\end{table}
+
+
+\subsection{Filtros de caracteres}
+Na web é comum encontrar documentos com tags HTML. Para este projeto, estas tags não terão importância, portanto serão removidas e apenas será deixado apenas o texto. É possível verificar o resultado exemplificado na tabela \ref{tab:charfilter}.
+
+\begin{table}[htb]
+	\centering
+    \def\arraystretch{1.2} % padding da linhas da tabela
+    \begin{tabular}{|l|l|l|}
+        \hline
+        & \textbf{Antes} & \textbf{Depois} \\ \hline
+        1 & <p>I will organize this room</p> & I will organize this room            \\ \hline
+        2 & All rooms are organized and clean & All rooms are organized and clean \\ \hline
+        3 & Cleaners are <b>very</b> effective & Cleaners are very effective                              \\ \hline
+        4 & I will open this window & I will open this window                             \\ \hline
+    \end{tabular}
+	\caption{Frases de exemplo após os filtros de caracteres}
+    \label{tab:charfilter}
+\end{table}
+
+\subsection{Tokenização}
+O processo de tokenização é responsável por dividir um texto em unidades menores. Essas unidades podem ser palavras, caracteres, cadeia de palavras ou cadeia de caracteres. 
+
+Para este projeto, foi usado a tokenização dividindo o conteúdo do texto em palavras usando o algoritmo Unicode Text Segmentation \cite{unicodesegmentation}.
+
+\begin{table}[htb]
+	\centering
+    \def\arraystretch{1.2} % padding da linhas da tabela
+    \begin{tabular}{|l|l|l|}
+        \hline
+        & \textbf{Antes} & \textbf{Depois} \\ \hline
+        1 & I will organize this room & [I, will, organize, this, room]            \\ \hline
+        2 & All rooms are organized and clean & [All, rooms, are, organized, and, clean] \\ \hline
+        3 & Cleaners are very effective & [Cleaners, are, very, effective]                              \\ \hline
+        4 & I will open this window & [I, will, open, this, window]                             \\ \hline
+    \end{tabular}
+	\caption{Frases de exemplo após a tokenização}
+    \label{tab:tokenization}
+\end{table}
+
+\subsection{Filtros de tokens}
+\subsubsection{Uniformização}
+ Foi usada nesse projeto uma transformação responsável por deixar todos os caracteres minúsculos.
+
+\begin{table}[htb]
+	\centering
+    \def\arraystretch{1.2} % padding da linhas da tabela
+    \begin{tabular}{|l|l|l|}
+        \hline
+        & \textbf{Antes} & \textbf{Depois} \\ \hline
+        1 & [I, will, organize, this, room] & [i, will, organize, this, room]            \\ \hline
+        2 & [All, rooms, are, organized, and, clean] & [all, rooms, are, organized, and, clean] \\ \hline
+        3 & [Cleaners, are, very, effective] & [cleaners, are, very, effective]                              \\ \hline
+        4 & [I, will, open, this, window] & [i, will, open, this, window]                             \\ \hline
+    \end{tabular}
+	\caption{Frases de exemplo após as transformações}
+    \label{tab:transformations}
+\end{table}
+
+\subsubsection{Remoção de Stop Words}
+Existem palavras que adicionam pouco valor semântico ao texto, são conhecidas como \textit{stop words}. Stop words são palavras como: isso, um, a, o, que. Estas também serão removidas. Existem diversas formas de as detectar em um corpus, as mais comuns são com uso de listas com stop words predefinidas ou definindo um limiar máximo de ocorrências que uma palavra pode ter. Assume-se que palavras que ocorrem frequentemente em vários documentos não agregam muito conteúdo ao texto.
+
+\begin{table}[htb]
+	\centering
+    \def\arraystretch{1.2} % padding da linhas da tabela
+    \begin{tabular}{|l|l|l|}
+        \hline
+        & \textbf{Antes} & \textbf{Depois} \\ \hline
+        1 & [i, will, organize, this, room] & [organize, room]            \\ \hline
+        2 & [all, rooms, are, organized, and, clean] & [rooms, organized, clean] \\ \hline
+        3 & [cleaners, are, very, effective] & [cleaners, effective]                              \\ \hline
+        4 & [i, will, open, this, window] & [open, window]                             \\ \hline
+    \end{tabular}
+	\caption{Frases de exemplo após a remoção de stop words}
+    \label{tab:tokenfilter}
+\end{table}
+
+\subsubsection{Stemming}
+O propósito do stemming é reduzir a variação morfológica das palavras \cite{stemmingdef}. Documentos podem usar formas diferentes de uma palavra, por exemplo, um deles pode usar organizar, outro pode usar organizando e outro organizado. Embora as palavras não sejam idênticas, elas trazem consigo um sentido similar, o que pode ser útil em um sistema de recuperação da informação onde se deseja conteúdo relacionado, ainda que não idêntico.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{chapters/project/porterrules.png}
+	\caption{Regras usadas na primeira fase do Porter Stemmer}
+    \label{fig:porterstemmerprocess}
+\end{figure}
+
+O algoritmo mais comum de Stemming é o Porter \cite{porterstemming}. Este algoritmo usa fases com conjuntos definidos de regras para definir as transformações que uma dada palavra irá passar. A figura \ref{fig:porterstemmerprocess} mostra algumas das regras executadas na primeira fase do algoritmo.
+
+Pode-se ver que agora, que as frases descritas na tabela \ref{tab:tokenfilter}, possuem mais palavras em comum do que anteriormente, isso garante uma busca mais abrangente, permitindo o usuário ter resultados com palavras diferentes da sua, mas que ainda acessem o mesmo domínio. Entretanto o resultado não é perfeito, palavras relacionadas podem acabar tendo finais diferentes e palavras diferentes podem possuir o mesmo resultado.
+\begin{table}[htb]
+	\centering
+    \def\arraystretch{1.2}
+    \begin{tabular}{|l|l|l|}
+        \hline
+        & \textbf{Antes} & \textbf{Depois} \\ \hline
+        1 & [organize, room]  & [organ, room]            \\ \hline
+        2 & [rooms, organized, clean]  & [room, organ, clean] \\ \hline
+        3 & [cleaners, effective]  & [cleaner, effect]                              \\ \hline
+        4 & [open, window]  & [open, window]                             \\ \hline
+    \end{tabular}
+	\caption{Frases de exemplo após o stemming}
+    \label{tab:tokenfilter}
+\end{table}
+
+\subsection{Aplicações}
+\begin{itemize}
+    \item Sumarização de textos
+    \item Question Answering
+    \item Análise de sentimento
+    \item Assistentes pessoais
+    \item Tradução
+\end{itemize}
 
 \section{Estratégias de Recuperação}
 
-De acordo com \cite{Grossman2004}, as estratégias de recuperação atribuem uma medida de similaridade entre uma consulta e um documento. Essas estratégias são baseadas na quantidade de ocorrências do termo em um documento. Quanto mais frequente o termo, mais relevante o documento. Além disso algumas dessas estratégias tratam das ambiguidades dos termos, e.g, \textit{rio de janeiro} e \textit{cidade maravilhosa}, podem ser referência ao mesmo conceito.
+De acordo com \citep{Grossman2004}, as estratégias de recuperação atribuem uma medida de similaridade entre uma consulta e um documento. Essas estratégias são baseadas na quantidade de ocorrências do termo em um documento. Quanto mais frequente o termo, mais relevante o documento. Além disso algumas dessas estratégias tratam das ambiguidades dos termos, e.g, \textit{rio de janeiro} e \textit{cidade maravilhosa}, podem ser referência ao mesmo conceito.
 Os algoritmos consistem de uma consulta \textit{c} e um conjunto de documentos \textit{d\textsubscript{1}}, \textit{d\textsubscript{2}}, ..., \textit{d\textsubscript{n}} o coeficiente de similaridade é dado por \textit{SC(c,d\textsubscript{i})} para \textit{1 <= i <= n}.
-Ainda de acordo com \cite{Grossman2004}, essas são algumas das estratégias que podem ser utilizadas:
 
-\begin{itemize}
-	\item{\textbf{Modelo vetorial}: Calcula a medida de similaridade através da definição de vetores que representam cada documento e um vetor que representa a consulta. Esse modelo é baseado na idéia que o significado de um documento é transmitido pelas palavras utilizadas. Se conseguir representar as palavras de um documento por um vetor, é possível comparar documentos e determinar o quão similar é o conteúdo.}
-	
-	\item{\textbf{Recuperação probabilística}: Consiste na probabilidade de que um termo irá aparecer em um documento relevante e é computada para cada termo em cada coleção. Para termos que coincidem entre a consulta e um documento, o coeficiente de similaridade é computado como a combinação das probabilidades de cada termo coincidente.}
-	
-	\item{\textbf{Modelos de linguagem}: Um modelo de linguagem estatística é um mecanismo probabilístico para “gerar” um texto. Ele define assim uma distribuição sobre todas as sequências de palavras possíveis. O modelo de linguagem mais simples é o modelo de linguagem do unigram, que é essencialmente uma distribuição de palavras.}
-	
-	\item{\textbf{Rede Bayesiana}: Uma rede Bayesiana é usada para inferir a relevância do documento para a consulta. Isso é baseado na “evidência” em um documento que permite inferir sobre a relevância do documento. A força dessa inferência é usada como o coeficiente de similaridade.}
-	
-	\item{\textbf{Boolean Indexing}: Uma pontuação é atribuída de tal forma que uma consulta booleana inicial resulta em uma classificação. Isso é feito associando um peso a cada termo de consulta para que esse peso seja usado para calcular o coeficiente de similaridade.}
-	
-	\item{\textbf{\ac{LSI}}: A ocorrência de termos em documentos é representada com uma matriz termo-documento. A matrix é decomposta através de decomposição em valores singulares (SVD) para filtrar os ruídos encontrados no documento, dessa forma, dois documentos que possuem a mesma semântica estão próximos um do outro num espaço multidimensional.}
-	
-	\item{\textbf{Redes Neurais}: A sequência de “neurônios”, ou nós em uma rede, que sinalizam quando ativados por uma consulta acionando links para documentos. A força de cada link na rede é transmitida para o documento e coletada para formar o coeficiente de singularidade entre a consulta e o documento. As redes são “treinadas” ajustando os pesos nos links em resposta para predeterminar documentos relevantes ou não.}
-\end{itemize}
 
 
 \section{Modelo Probabilístico de Recuperação}
