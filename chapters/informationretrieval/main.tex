@@ -46,6 +46,11 @@ Recuperação de Dados (\ac{RD}) tem o propósito de encontrar dados que casam p
 
 Ainda segundo \cite{Fred2008}, o usuário que utiliza um sistema de recuperação de informação não está apenas interessado naquela exata combinação de palavras. Geralmente essas palavras servem para que sistema possa encontrar um assunto no qual elas estão inseridas e muitas das vezes, documentos que possuam palavras sinônimas podem ser de interesse do usuário também. Já um usuário de um sistema de recuperação de dados, está buscando por um item específico, com características particulares e apenas itens que seja exatamente como descritos na busca, são de interesse do usuário. Qualquer outro resultado não satisfará a busca.
 
+\section{Processamento de linguagem natural}
+\subsection{Histórico}
+\subsection{Sintática}
+\subsection{Semântica}
+
 \section{Estratégias de Recuperação}
 
 De acordo com \cite{Grossman2004}, as estratégias de recuperação atribuem uma medida de similaridade entre uma consulta e um documento. Essas estratégias são baseadas na quantidade de ocorrências do termo em um documento. Quanto mais frequente o termo, mais relevante o documento. Além disso algumas dessas estratégias tratam das ambiguidades dos termos, e.g, \textit{rio de janeiro} e \textit{cidade maravilhosa}, podem ser referência ao mesmo conceito.
@@ -65,14 +70,11 @@ Ainda de acordo com \cite{Grossman2004}, essas são algumas das estratégias que
 	
 	\item{\textbf{\ac{LSI}}: A ocorrência de termos em documentos é representada com uma matriz termo-documento. A matrix é decomposta através de decomposição em valores singulares (SVD) para filtrar os ruídos encontrados no documento, dessa forma, dois documentos que possuem a mesma semântica estão próximos um do outro num espaço multidimensional.}
 	
-	\item{\textbf{Rede neural}: A sequência de “neurônios”, ou nós em uma rede, que sinalizam quando ativados por uma consulta acionando links para documentos. A força de cada link na rede é transmitida para o documento e coletada para formar o coeficiente de singularidade entre a consulta e o documento. As redes são “treinadas” ajustando os pesos nos links em resposta para predeterminar documentos relevantes ou não.}
-	
-	\item{\textbf{Algoritmo genético}: Uma sequência de “neurônios”, ou nós em uma rede, que sinalizam quando ativados por uma consulta acionando links para documentos. A força de cada link na rede é transmitida para o documento, e em seguida coletada para formar o coeficiente de similaridade entre a consulta e o documento. As redes são “treinadas” ajustando os pesos nos links em resposta para predeterminar documentos relevantes ou não.}
-
+	\item{\textbf{Redes Neurais}: A sequência de “neurônios”, ou nós em uma rede, que sinalizam quando ativados por uma consulta acionando links para documentos. A força de cada link na rede é transmitida para o documento e coletada para formar o coeficiente de singularidade entre a consulta e o documento. As redes são “treinadas” ajustando os pesos nos links em resposta para predeterminar documentos relevantes ou não.}
 \end{itemize}
 
 
-\section{Modelo Vetorial de Recuperação}
+\section{Modelo Probabilístico de Recuperação}
 
 Como brevemente abordado na seção anterior, o modelo de espaço vetorial calcula a medida de similaridade através da definição de vetores. O conteúdo de cada documento e os termos da consulta, conforme ilustrado na Figura \ref{fig:documento-vetor}, são traduzidos em vetores e dessa forma é possível medir a similaridade através de operações feitas em cima desses vetores. Os documentos cujo conteúdo, conforme medido através dos termos presentes no documento, correspondem mais ao conteúdo da consulta, são considerados os mais relevantes \citep{Grossman2004}.
 
@@ -153,40 +155,7 @@ w_{t,d} = (1 + \log tf_{t,d}) \cdot \log_{10}(N/df_{t})
 \label{eq:tf-idf}
 \end{equation}
 
-\subsection{Cosine Similarity}
-
-Para atribuir um peso a um documento para uma consulta, podemos medir a similaridade entre o vetor da consulta e o vetor do documento. Normalmente o ângulo entre dois vetores é usado como a medida de divergência e o cosseno do ângulo é usado como similaridade numérica (uma vez que o cosseno é 1.0 para vetores idênticos e 0.0 para vetores ortogonais) \cite{Singhal2001}. Isso implica dizer que se o documento corresponder exatamente aos termos da consulta, a diferença angular entre os dois vetores será zero e a similaridade obtida através de \textit{cosine similarity} será um 1.
-
-O cálculo do \textit{cosine similarity} pode ser visto abaixo:
-
-\begin{equation}
-cos(c, d) = \frac {c \cdot d}{||c|| \cdot ||d||}
-= \frac {c}{||c||} \cdot \frac {d}{||d||}
-= \frac {\sum_{i=1}^n c_id_i} {\sum_{i=1}^n c_i^2 \sum_{i=1}^n d_i^2}
-\label{eq:cosine-sim}
-\end{equation}
-
-E como foi definido anteriormente:
-\newline 
-\textit{c\textsubscript{i}} é o \textit{ft-idf weight} do termo i na consulta.
-\newline 
-\textit{d\textsubscript{i}} é o \textit{ft-idf weight} do termo no documento.
-\newline
-
-Na Figura \ref{fig:espaco_vetorial-doc-consulta}, temos uma representação de um espaço de vetores normalizados. O vetor da consulta \textit{q} e mais três vetores \textit{d\textsubscript{1}}, \textit{d\textsubscript{2}}, \textit{d\textsubscript{3}}, cada um representando um documento. Essa imagem representa a busca de documentos que estejam relacionados com \textit{fofoca} e \textit{inveja} numa proporção similar.
-
-Analisando visualmente o exemplo, quando aplicarmos a medida de similaridade \textit{cosine similarity}, entre a consulta e os documentos. Teremos o grau de similaridade na seguinte ordem: \textit{d\textsubscript{2}}, \textit{d\textsubscript{1}} e \textit{d\textsubscript{3}}, visto que quanto menor o ângulo entre os vetores, mais similares eles são.
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=1.0]{chapters/informationretrieval/cosine_similarity.png}
-	\caption{Representação dos vetores da consulta e três documentos \citep{Manning2008}.}
-	\label{fig:espaco_vetorial-doc-consulta}
-\end{figure}
-
-\section{Processamento de linguagem natural}
- 
-
+\subsection{Okapi BM25}
 
 \section{Métodos de avaliação}
 A partir das opções disponibilizadas para construir sistemas de recuperação da informação, resta buscar meios para os avaliar. Considerando que não existe método perfeito para todos os problemas é necessário se conduzir uma pesquisa para averiguar-se qual a melhor solução para determinado problema. Para fazer isso, determinam-se métricas que irão indicar se há conformidade da solução com o problema.
